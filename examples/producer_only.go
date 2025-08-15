@@ -11,7 +11,7 @@ import (
 func producerMain() {
 	// Configure the producer
 	config := producer.Config{
-		Brokers: []string{"localhost:9092"}, // Your Kafka broker addresses
+		Brokers: []string{"localhost:9092"}, // Kafka broker addresses
 	}
 
 	// Create the producer

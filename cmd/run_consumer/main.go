@@ -1,23 +1,17 @@
-package main
+package run_consumer
 
 import (
 	"log"
-	"oran-kafka-go-client/pkg/consumer"
-	"os"
-	"strings"
+
+	consumer "github.com/radheem/ran-kafka-client-go/pkg/consumer"
 )
 
-func main() {
-    brokers := strings.Split(os.Getenv("KAFKA_BROKERS"), ",")
-    topics := strings.Split(os.Getenv("KAFKA_TOPICS"), ",")
-    consumerGroup := os.Getenv("CONSUMER_GROUP")
-    mongoURI := os.Getenv("MONGO_URI")
-    mongoDB := os.Getenv("MONGO_DB")
-    mongoCollection := os.Getenv("MONGO_COLLECTION")
-
-    if len(brokers) == 0 || brokers[0] == "" {
-        log.Fatal("KAFKA_BROKERS environment variable is required")
+func ExecuteConsumer(port string, topics []string, consumerGroup string, mongoURI string, mongoDB string, mongoCollection string ) {
+    if (port == ""){
+        return 
     }
+    brokers := []string{"localhost:"+port}
+    
     if len(topics) == 0 || topics[0] == "" {
         log.Fatal("KAFKA_TOPICS environment variable is required")
     }

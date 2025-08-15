@@ -10,7 +10,6 @@ import (
 )
 
 func main() {
-	// Example 1: Basic Producer Usage
 	fmt.Println("=== Kafka Producer Example ===")
 	if err := runProducerExample(); err != nil {
 		log.Printf("Producer example failed: %v", err)
@@ -19,7 +18,6 @@ func main() {
 	// Wait a moment before starting consumer
 	time.Sleep(2 * time.Second)
 
-	// Example 2: Basic Consumer Usage
 	fmt.Println("\n=== Kafka Consumer Example ===")
 	if err := runConsumerExample(); err != nil {
 		log.Printf("Consumer example failed: %v", err)
@@ -29,7 +27,7 @@ func main() {
 func runProducerExample() error {
 	// Create producer configuration
 	producerConfig := producer.Config{
-		Brokers: []string{"localhost:9092"}, // Adjust to your Kafka brokers
+		Brokers: []string{"localhost:9092"}, // Adjust to Kafka brokers
 	}
 
 	// Create new producer
@@ -39,7 +37,6 @@ func runProducerExample() error {
 	}
 	defer prod.Close()
 
-	// Example 1: Send a JSON message
 	jsonMessage := producer.Message{
 		Key:   "user-123",
 		Value: map[string]interface{}{
@@ -76,7 +73,6 @@ func runProducerExample() error {
 		return fmt.Errorf("failed to send string message: %w", err)
 	}
 
-	// Example 3: Send raw bytes message
 	rawData := []byte(`{"order_id": 789, "status": "completed", "amount": 99.99}`)
 	if err := prod.SendRawMessage("orders", "order-789", rawData, map[string]string{
 		"content-type": "application/json",
@@ -85,7 +81,6 @@ func runProducerExample() error {
 		return fmt.Errorf("failed to send raw message: %w", err)
 	}
 
-	// Example 4: Send multiple messages in a loop
 	fmt.Println("Sending batch of messages...")
 	for i := 0; i < 5; i++ {
 		batchMessage := producer.Message{
@@ -105,7 +100,6 @@ func runProducerExample() error {
 			log.Printf("Failed to send batch message %d: %v", i, err)
 		}
 
-		// Small delay between messages
 		time.Sleep(100 * time.Millisecond)
 	}
 
@@ -116,7 +110,7 @@ func runProducerExample() error {
 func runConsumerExample() error {
 	// Create consumer configuration
 	consumerConfig := consumer.Config{
-		Brokers:       []string{"localhost:9092"}, // Adjust to your Kafka brokers
+		Brokers:       []string{"localhost:9092"}, // Kafka brokers
 		Topics:        []string{"user-events", "notifications", "orders", "batch-messages"},
 		ConsumerGroup: "example-consumer-group",
 		// Optional MongoDB configuration - comment out if not using MongoDB

@@ -9,7 +9,7 @@ import (
 func consumerMain() {
 	// Configure the consumer
 	config := consumer.Config{
-		Brokers:       []string{"localhost:9092"}, // Your Kafka broker addresses
+		Brokers:       []string{"localhost:9092"}, // Kafka broker addresses
 		Topics:        []string{"my-topic"},       // Topics to consume from
 		ConsumerGroup: "my-consumer-group",        // Consumer group ID
 		

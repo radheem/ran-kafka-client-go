@@ -1,4 +1,4 @@
-# Kafka Go Client Examples
+# Kafka Go Client
 
 This directory contains example usage scripts for the Kafka Go client library.
 
@@ -19,7 +19,7 @@ Before running these examples, make sure you have:
 
 1. **Kafka running locally** on `localhost:9092` (or update the broker addresses in the examples)
 2. **MongoDB running locally** on `localhost:27017` (optional, for message storage)
-3. **Go modules initialized** in your project
+3. **Go modules initialized** in project
 
 ## Running the Examples
 

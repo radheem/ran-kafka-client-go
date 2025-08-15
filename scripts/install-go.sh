@@ -10,7 +10,7 @@ sudo rm -rf /usr/local/go
 # 4. Extract the archive to /usr/local
 sudo tar -C /usr/local -xzf go${GO_VERSION}.linux-amd64.tar.gz
 
-# 5. Add Go to your PATH (for current shell session)
+# 5. Add Go to PATH (for current shell session)
 export PATH=$PATH:/usr/local/go/bin
 
 # 6. Optionally, add to ~/.bashrc or ~/.zshrc for persistence
